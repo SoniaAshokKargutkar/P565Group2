@@ -4,6 +4,7 @@ const url = require('url');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const ejs = require('ejs');
 
 const app = express();
 const port = 40951
@@ -15,12 +16,13 @@ const server = app.listen(port,  function () {
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(fileUpload());
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
 
 // Create a connection to DB
 
 // Handle requests to specific endpoints
 
 app.get('/', function(req, res) {
-    res.render('homepage.html');
+    res.sendFile(path.join(__dirname, 'public', 'homepage.html'));
 });
