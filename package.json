@@ -1,26 +1,31 @@
 {
-    "name": "Group2TempName",
-    "version": "0.0.1",
-    "description": "Group project for P565 by Group 2",
-    "repository": "https://https://github.iu.edu/lalovett/P565Group2",
-    "main": "server.js",
-    "scripts": {
-      "start": "node server.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-      "volunteer",
-      "management",
-      "organizer",
-      "event",
-      "donate"
-    ],
-    "author": "Luke, Sonia, Milan, John",
-    "license": "UNLICENSED",
-    "dependencies": {
-      "body-parser": "^1.19.0",
-      "bootstrap": "^4.3.1",
-      "express": "^4.16.4",
-      "jquery": "^3.4.0"
-    }
+  "name": "Group2TempName",
+  "version": "0.0.1",
+  "description": "Group project for P565 by Group 2",
+  "repository": "https://https://github.iu.edu/lalovett/P565Group2",
+  "main": "server.js",
+  "scripts": {
+    "react_win": "set PORT=40952 && cd react && npm start",
+    "react_unix": "PORT=40952 && cd react && npm start",
+    "node": "node server.js",
+    "start_win": "concurrently --kill-others \"npm run react_win\" \"npm run node\"",
+    "start": "concurrently --kill-others \"npm run react_unix\" \"npm run node\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "volunteer",
+    "management",
+    "organizer",
+    "event",
+    "donate"
+  ],
+  "author": "Luke, Sonia, Milan",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.2",
+    "express": "^4.16.4",
+    "nodemon": "^1.19.2"
   }
+}

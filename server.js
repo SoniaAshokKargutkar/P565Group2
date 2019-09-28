@@ -15,7 +15,6 @@ const server = app.listen(port,  function () {
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(fileUpload());
 
 // Create a connection to DB
 
