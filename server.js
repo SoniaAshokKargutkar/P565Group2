@@ -20,18 +20,21 @@ app.use(bodyParser.json());
 
 // Create a connection to DB
 const con = mysql.createConnection({
-    host: "localhost",
-    user: "username",
-    password: "password"
+    host: "db.soic.indiana.edu",
+    port: "40953",
+    user: "lalovett",
+    password: "my+sql=p565f19_lalovett",
+    database: "p565f19_lalovett"
 });
 
 // Set up SMTP
 let transport = nodemailer.createTransport({
-    host: "",
-    port: 2525,
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: true,
     auth: {
-        user: "",
-        pass: ""
+        user: "connecthourofficial@gmail.com",
+        pass: "P565Group2"
     }
 });
 
@@ -60,8 +63,8 @@ app.post('/register', function(req, res) {
             if (success) {
                 // If creation was successful, prompt them to verify email
                     const message = {
-                        from: "OUR EMAIL",
-                        to: "THIER EMAIL",
+                        from: "<connecthourofficial@gmail.com>",
+                        to: user_info.email,
                         subject: "Verify your Email Address",
                         text: "Thank you for registering! To verify your account, click this link: LINK"
                     }
