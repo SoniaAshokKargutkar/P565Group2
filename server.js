@@ -4,11 +4,11 @@ const url = require('url');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const port = 40951
+const port = 40951;
 
 const server = app.listen(port,  function () {
     console.log('Navigate to silo.sice.indiana.edu:'+port);
@@ -20,12 +20,11 @@ app.use(bodyParser.json());
 
 // Create a connection to DB
 const con = mysql.createConnection({
-    host: "db.soic.indiana.edu",
-    port: "40953",
     user: "lalovett",
     password: "my+sql=p565f19_lalovett",
     database: "p565f19_lalovett"
 });
+
 
 // Set up SMTP
 let transport = nodemailer.createTransport({
@@ -36,11 +35,6 @@ let transport = nodemailer.createTransport({
         user: "connecthourofficial@gmail.com",
         pass: "P565Group2"
     }
-});
-
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected to MySql");
 });
 
 // Handle requests to specific endpoints
